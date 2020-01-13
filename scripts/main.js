@@ -47,4 +47,23 @@ function initializeEvents() {
   thumbnails.forEach(addThumbClickHandler);
 }
 
+function resetOtters(otters) {
+  otters.forEach(function (otter) {
+    var originalImage = otter.getAttribute('data-image-url-original');
+    otter.setAttribute('data-image-url', originalImage);
+  })
+}
+
+function trickIt(otter) {
+  otter.setAttribute('data-image-url',
+   "https://investorplace.com/wp-content/uploads/2014/05/DuckDuckGo-Logo.jpg");
+}
+
+function randomOtter() {
+  var otters = getThumbnailsArray();
+  resetOtters(otters);
+  var randomIndex = Math.floor(Math.random() * 5);
+  trickIt(otters[randomIndex]);
+}
+
 initializeEvents();
